@@ -37,14 +37,14 @@ module.exports = {
   // },
   configureWebpack: config => {
     if (process.env.NODE_ENV === 'production') {
-      config.plugins = [
-        ...config.plugins,
-        new CompressionPlugin({
-          test: /\.js$|\.html$|\.css/,
-          threshold: 10240,
-          deleteOriginalAssets: true
-        })
-      ]
+      // config.plugins = [
+      //   ...config.plugins,
+      //   new CompressionPlugin({
+      //     test: /\.js$|\.html$|\.css/,
+      //     threshold: 10240,
+      //     deleteOriginalAssets: true
+      //   })
+      // ]
       // config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true
       return {
         output: {
