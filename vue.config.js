@@ -3,16 +3,16 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const path = require('path');
 
 switch(process.env.VUE_APP_CURRENTMODE) {
-  case 'test':
+  case 'dev':
     Version = '1.0.1'// 测试环境
     break
-  case 'official':
-    Version = '1.1'// 正式环境
+  case 'prod':
+    Version = '1.0'// 正式环境
 }
 
 
 module.exports = {
-  publicPath: './',
+  // publicPath: './',
   devServer: {
     // host: "localhost",
     // port: 8080
@@ -27,14 +27,14 @@ module.exports = {
   //     }
   //   }
   // },
-  // pluginOptions: {
-  //   'style-resources-loader': {
-  //     preProcessor: 'less',
-  //     patterns: [
-  //       path.resolve(__dirname, './src/assets/common.less')
-  //     ]
-  //   }
-  // },
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'less',
+      patterns: [
+        path.resolve(__dirname, './src/assets/common.less')
+      ]
+    }
+  },
   configureWebpack: config => {
     if (process.env.NODE_ENV === 'production') {
       // config.plugins = [
