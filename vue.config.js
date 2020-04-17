@@ -3,22 +3,20 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const path = require('path');
 
 switch(process.env.VUE_APP_CURRENTMODE) {
-  case 'test':
+  case 'dev':
     Version = '1.0.1'// 测试环境
     break
-  case 'official':
-    Version = '1.1'// 正式环境
+  case 'prod':
+    Version = '1.0'// 正式环境
 }
 
 
 module.exports = {
-  publicPath: './',
-
+  // publicPath: './',
   devServer: {
     // host: "localhost",
     // port: 8080
   },
-
   // css: {
   //   loaderOptions: {
   //     css: {
@@ -29,39 +27,24 @@ module.exports = {
   //     }
   //   }
   // },
-  // pluginOptions: {
-  //   'style-resources-loader': {
-  //     preProcessor: 'less',
-  //     patterns: [
-  //       path.resolve(__dirname, './src/assets/common.less')
-  //     ]
-  //   }
-  // },
-  // chainWebpack: config => {
-  //   config.module
-  //     .rule("images")
-  //     .use("url-loader")
-  //     .tap(options => {
-  //       options.name = 'img/[name].[ext]?v=' + Version;
-  //       options.fallback = {
-  //         loader: "file-loader",
-  //         options: {
-  //           name: 'img/[name].[ext]?v=' + Version
-  //         }
-  //       };
-  //       return options;
-  //     });
-  // }
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'less',
+      patterns: [
+        path.resolve(__dirname, './src/assets/common.less')
+      ]
+    }
+  },
   configureWebpack: config => {
     if (process.env.NODE_ENV === 'production') {
-      config.plugins = [
-        ...config.plugins,
-        new CompressionPlugin({
-          test: /\.js$|\.html$|\.css/,
-          threshold: 10240,
-          deleteOriginalAssets: true
-        })
-      ]
+      // config.plugins = [
+      //   ...config.plugins,
+      //   new CompressionPlugin({
+      //     test: /\.js$|\.html$|\.css/,
+      //     threshold: 10240,
+      //     deleteOriginalAssets: true
+      //   })
+      // ]
       // config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true
       return {
         output: {
@@ -77,4 +60,19 @@ module.exports = {
       }
     }
   },
+  // chainWebpack: config => {
+  //   config.module
+  //     .rule("images")
+  //     .use("url-loader")
+  //     .tap(options => {
+  //       options.name = 'img/[name].[ext]?v=' + Version;
+  //       options.fallback = {
+  //         loader: "file-loader",
+  //         options: {
+  //           name: 'img/[name].[ext]?v=' + Version
+  //         }
+  //       };
+  //       return options;
+  //     });
+  // }
 };

@@ -24,7 +24,8 @@ export default {
   },
   data() {
     return {
-      isAlive: true
+      isAlive: true,
+      value: ''
     }
   },
   methods: {
