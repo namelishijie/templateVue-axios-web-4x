@@ -13,10 +13,12 @@ switch(process.env.VUE_APP_CURRENTMODE) {
 
 module.exports = {
   publicPath: './',
+
   devServer: {
     // host: "localhost",
     // port: 8080
   },
+
   // css: {
   //   loaderOptions: {
   //     css: {
@@ -35,6 +37,21 @@ module.exports = {
   //     ]
   //   }
   // },
+  // chainWebpack: config => {
+  //   config.module
+  //     .rule("images")
+  //     .use("url-loader")
+  //     .tap(options => {
+  //       options.name = 'img/[name].[ext]?v=' + Version;
+  //       options.fallback = {
+  //         loader: "file-loader",
+  //         options: {
+  //           name: 'img/[name].[ext]?v=' + Version
+  //         }
+  //       };
+  //       return options;
+  //     });
+  // }
   configureWebpack: config => {
     if (process.env.NODE_ENV === 'production') {
       config.plugins = [
@@ -60,19 +77,4 @@ module.exports = {
       }
     }
   },
-  // chainWebpack: config => {
-  //   config.module
-  //     .rule("images")
-  //     .use("url-loader")
-  //     .tap(options => {
-  //       options.name = 'img/[name].[ext]?v=' + Version;
-  //       options.fallback = {
-  //         loader: "file-loader",
-  //         options: {
-  //           name: 'img/[name].[ext]?v=' + Version
-  //         }
-  //       };
-  //       return options;
-  //     });
-  // }
 };

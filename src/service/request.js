@@ -68,11 +68,13 @@ axios.interceptors.response.use(
 
 const post = (path, options, skip) => {
   skipToken = skip || false
+  options = options || {}
   options.method = 'POST'
   return request(path, options)
 }
 const get = (path, options, skip) => {
   skipToken = skip || false
+  options = options || {}
   options.method = 'GET'
   return request(path, options)
 }
