@@ -89,7 +89,7 @@ const request = async (path, options) => {
   }
 
   return await axios({
-    url: `${store.getters.lang}${path}`,
+    url: `${path}`,
     ...parameters
   })
   .then(response => {
