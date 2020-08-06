@@ -6,9 +6,7 @@
     </div>
     <router-view v-if="isAlive"/>
 
-    <input v-model="value" type="text" v-validate="'required|email'" name="email" data-vv-scope="login" data-vv-validate-on="blur">
-    <p v-show="errors.has('login.email')">{{ errors.first('login.email') }}</p> 
-    <button @click="onDemo">确定</button>
+    <router-link to="/demoVee">demoVee</router-link>
 
 
   </div>
@@ -35,11 +33,6 @@ export default {
         this.isAlive = true
       })
     },
-    onDemo() {
-      this.$validator.validateAll('login').then(res => {
-        console.log(res)
-      })
-    }
   },
   created() {
     this.$http.index()

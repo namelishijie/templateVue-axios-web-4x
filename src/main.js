@@ -5,10 +5,9 @@ import store from './store'
 import service from './service'
 import tools from './libs/tools'
 import 'normalize.css/normalize.css'
-import VeeValidate, { Validator } from 'vee-validate'
-import Extend from './libs/vaildate'
+import './libs/vaildate'
 
-Vue.use(service).use(tools).use(VeeValidate).use(Extend, Validator)
+Vue.use(service).use(tools)
 
 Vue.config.productionTip = false
 
